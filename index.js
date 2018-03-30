@@ -20,7 +20,10 @@ client.on("connected", (address, port) => {
       .action(options.channels[0], "SKS_Executioner v1.0 ::: Now Online")
       .then(utils.sleeper(2000))
       .then(() => {
-        client.action(options.channels[0], "Mods can type !bot-help to get commands.");
+        client.action(
+          options.channels[0],
+          "Mods can type !bot-help to get commands. (Note: You can hide this connection message by editing options.js.)"
+        );
       })
       .catch(e => {
         console.log("error: ", e);
