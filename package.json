@@ -1,0 +1,16 @@
+{
+  "name": "sks-banbot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "StoutLabs",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "tmi.js": "^1.2.1"
+  }
+}
