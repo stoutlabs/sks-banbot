@@ -20,10 +20,7 @@ client.on("connected", (address, port) => {
       .action(options.channels[0], "SKS_Executioner v1.0 ::: Now Online")
       .then(utils.sleeper(2000))
       .then(() => {
-        client.action(
-          options.channels[0],
-          "Mods can type !bot-help to get commands. (Note: You can hide this connection message by editing options.js.)"
-        );
+        client.action(options.channels[0], "Mods can type !bot-help to get commands.");
       })
       .catch(e => {
         console.log("error: ", e);
@@ -61,7 +58,6 @@ client.on("chat", (channel, user, message, self) => {
         break;
 
       case "!execute":
-        //ban user here (msgArray[1] = username, reason = all msg text after msgArray[0] & msgArray[1])
         const reason = msgArray.slice(2).join(" ");
         const user = msgArray[1];
         utils
@@ -75,8 +71,6 @@ client.on("chat", (channel, user, message, self) => {
           .catch(e => {
             console.log("error banning user: ", e);
           });
-
-        //add user to ban list file
         break;
 
       case "!freedom":

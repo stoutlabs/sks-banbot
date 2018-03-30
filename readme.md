@@ -31,6 +31,8 @@ A Twitch chat bot to help automate the "ban runs" in the SourKoolAidShow's Souls
 * To start a new "banned users" file, type !newsession
 * To add a new ban, type: !execute (username) (reason message here) (example: !execute a_big_sandwich Sandwich was moldy.)
 * To free everyone, type: !freedom
+* To display these commands in chat, type: !bot-help
+* Note: To disable the message when connecting to the channel, just edit the options.js file under announce.connect. (Set to false)
 
 ### Special Thanks
 
