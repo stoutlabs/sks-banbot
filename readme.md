@@ -28,6 +28,9 @@ A Twitch chat bot to help automate the "ban runs" in the SourKoolAidShow's Souls
 ### Usage
 
 * Running the bot is easy! Open a command prompt from the directory your bot's file are in, and type: npm start
+* To start a new "banned users" file, type !newsession
+* To add a new ban, type: !execute (username) (reason message here) (example: !execute a_big_sandwich Sandwich was moldy.)
+* To free everyone, type: !freedom
 
 ### Special Thanks
 
