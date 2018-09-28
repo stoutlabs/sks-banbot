@@ -22,14 +22,18 @@ const initializeFile = datafile => {
 };
 
 const addBannedUser = (user, datafile) => {
-  return new Promise((resolve, reject) => {
-    const curUsersRaw = fs.readFileSync(datafile);
-    const curUsers = JSON.parse(curUsersRaw);
-    curUsers.users.push(user);
+  const curUsersRaw = fs.readFileSync(datafile);
+  const curUsers = JSON.parse(curUsersRaw);
+  let duplicates = curUsers.users.filter(el => el === user);
 
-    fs.writeFileSync(datafile, JSON.stringify(curUsers));
-    // if curlength > oldLength
-    resolve("saved!");
+  return new Promise((resolve, reject) => {
+    if (duplicates.length === 0) {
+      curUsers.users.push(user);
+      fs.writeFileSync(datafile, JSON.stringify(curUsers));
+      resolve("saved!");
+    } else {
+      reject("Already in ban list.");
+    }
   });
 };
 
@@ -39,8 +43,11 @@ const unbanEveryone = (datafile, client, channelName) => {
     const curUsers = JSON.parse(curUsersRaw);
     let unbannedCount = 0;
 
-    //calling unban with a delay, so we don't flood the Twitch API
-    curUsers.users.forEach((user, index) => {
+    //strip duplicates, in case there are any in the list
+    let uniqueUsers = [...new Set(curUsers.users)];
+
+    //calling unban with a 1250ms delay, so we don't flood the Twitch API
+    uniqueUsers.forEach((user, index) => {
       setTimeout(() => {
         client
           .unban(channelName, user)
