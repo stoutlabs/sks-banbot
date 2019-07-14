@@ -31,8 +31,6 @@ client.on("connected", (address, port) => {
 
 // handle chat interactions
 client.on("chat", (channel, user, message, self) => {
-  // ignore self here?
-
   // get broadcaster name here by removing # from the channel name, since they aren't usually listed as mods
   const channelName = channel.replace(/^#/, "");
 
